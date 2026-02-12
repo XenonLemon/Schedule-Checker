@@ -16,9 +16,11 @@ public class CanAttend {
 				int end1 = meetings.get(i).getEnd();
 				int start2 = meetings.get(j).getStart();
 				int end2 = meetings.get(j).getEnd();
-				if(!(start1 < start2 && end1 < end2 && start1 < end2 && start2 > end1 && end1 > start1 && end2 > start2)){
+				
+				if(start1 < start2 && end1 > start2){
 					return false;
 				}
+				
 			}
 		}
 		return true;
@@ -36,8 +38,9 @@ public class CanAttend {
 		//please include additional testing here!
 		meet.clear();
 		meet.add(new MeetingInterval(0,20));
+		//meet.add(new MeetingInterval(10,30));
 		meet.add(new MeetingInterval(60 ,100));
-		//meet.add(new MeetingInterval(90 ,120));
+		meet.add(new MeetingInterval(110 ,120));
 		//meet.add(new MeetingInterval(160 ,140));
 		System.out.println(canAttend(meet) ? "There is no conflict with attending "+meet+" meetings":"Can't attend "+meet+" meetings due to conflict");
 
